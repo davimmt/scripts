@@ -9,9 +9,10 @@ class Function:
 
     def getBaseVariables(self, i):
         password = [
-            self.b64decode('QWdhZGVpdGFETw=='), 
-            self.b64decode('U29MZW1icm9Eb0pvdGEmNQ=='), 
-            self.b64decode('djRuZXNzNDMyMQ=='),
+            self.b64decode('QWdhZGVpdGFETw=='), # padrão
+            self.b64decode('U29MZW1icm9Eb0pvdGEmNQ=='), # nova padrão
+            self.b64decode('djRuZXNzNDMyMQ=='), # vanessa
+            self.b64decode('dm1wYXNz'), # vmserver
         ]
 
         cron_header = r'SHELL=/bin/bash\nPATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin\n\n'

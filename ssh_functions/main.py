@@ -3,23 +3,25 @@ from Loja import Loja
 from Command import Command
 from Function import Function
 
-lojas = Loja().getPOS()
+vms = Loja().getVM() # return @list [loja, [nome, ip, index_senha]] -> index_senha é referente ao arquivo Function.py
 
-for loja in lojas:
-    print('Loja: 0' + str(loja[0]) + '\nCaixa: ' + loja[1][0] + '\nIP: 192.168.10' + str(loja[0]) + "." + loja[1][1] + '\n\n---\n')
+if __name__ == '__main__':
+    f = Function()
 
-# if __name__ == '__main__':
-#     c = Command()
-#     f = Function()
+    for vm in vms:
+        password_index = vm[1][2]
 
-#     ssh_password = f.getBaseVariables('password')[2]
-#     ssh = SSH('192.168.0.18', 'vanessa', ssh_password)
+        c = Command(password_index)
 
-#     file_name = '/etc/cron.d/ntpdate'
-#     cron = '*/30 * * * *'
-#     user = ' root '
-#     jobs = ['First', 'Second', 'Third']
+        ssh_hostname = vm[1][0]
+        ssh_ip = '192.168.' + str(vm[0]) + "." + vm[1][1]
+        ssh_password = f.getBaseVariables('password')[password_index]
 
-#     ssh.execute_commands(c.ntpdate(file_name, cron, user, jobs))
+        ssh = SSH(ssh_ip, ssh_hostname, ssh_password)
 
+        file_name = '/etc/cron.d/ntpdate'
+        cron = '*/30 * * * *'
+        user = ' root '
+        jobs = ['First', 'Second', 'Third']
 
+        ssh.execute_commands(c.ntpdate(file_name, cron, user, jobs))

@@ -1,9 +1,9 @@
 from Function import Function
 
 class Command:
-    def __init__(self):
+    def __init__(self, password_index):
         self.f = Function()
-        self.password = self.f.getBaseVariables('password')[2]
+        self.password = self.f.getBaseVariables('password')[password_index]
         self.cron_header = self.f.getBaseVariables('cron_header')
         self.sudo = self.f.sudo(self.password)
     
