@@ -17,4 +17,4 @@ class SSH:
                 for line in response:
                     print(f'INPUT: {cmd} | OUTPUT: {line}')
             else:
-                print('No response.')
+                print('No response.\n')

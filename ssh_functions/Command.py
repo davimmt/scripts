@@ -8,8 +8,10 @@ class Command:
         self.sudo = self.f.sudo(self.password)
     
     def ntpdate(self, file_name, cron, user, jobs):
+        imploded_jobs = ' && '.join(jobs)
+
         header = self.cron_header
-        bodyFormat = header + cron + user + jobs[0] + "; " + jobs[2]
+        bodyFormat = header + cron + user + imploded_jobs
 
         commands = [
             self.sudo + "install -m 777 /dev/null " + file_name,
