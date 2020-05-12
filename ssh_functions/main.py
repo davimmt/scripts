@@ -25,31 +25,13 @@ if __name__ == '__main__':
             continue
 
         try:
-            ssh.execute_commands(['mkdir /etc/cron.d/nodir'])
+            print('\033[1m\033[94m[' + ssh_hostname + ']\n\033[0m')
+            ssh.execute_commands(c.getDates())
+            print('---\n')
         except Exception:
             errors.append('Falha na execução do comando com o caixa \033[1m' + ssh_hostname)
             continue
 
-    # for loja in lojas:
-    #     password_index = loja[1][2]
-    #     ssh_hostname = loja[1][0]
-    #     ssh_ip = '192.168.' + loja[0] + "." + loja[1][1]
-
-    #     file_name = '/etc/cron.d/ntpdate'
-    #     cron = '*/30 * * * *'
-    #     user = ' root '
-    #     jobs = [
-    #       'First', 
-    #       'Second', 
-    #       'Third'
-    #     ]
-
-    #     try:
-    #         ssh.execute_commands(c.ntpdate(file_name, cron, user, jobs))
-    #     except Exception:
-    #         errors.append('Falha na execução do comando com o caixa \033[1m' + ssh_hostname)
-    #         continue
-        
     for error in errors:
         print('\033[91m' + error + '.\n')
 

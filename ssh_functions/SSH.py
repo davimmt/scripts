@@ -15,6 +15,7 @@ class SSH:
             response = stdout.readlines()
             if response:
                 for line in response:
-                    print(f'INPUT: {cmd} | OUTPUT: {line}')
+                    print(f'{line}')
+                    # print(f'INPUT: {cmd} | OUTPUT: {line}')
             else:
                 print('No response.\n')

@@ -20,3 +20,11 @@ class Command:
         ]
 
         return commands
+
+    def getDates(self):
+        commands = [
+            "echo 'Hardware Clock: '; " + self.sudo + "hwclock", # | cat >> $file_name
+            "echo 'System Clock: '; date '+%a %d %b %Y %H:%M:%S'" # | cat >> $file_name
+        ]
+
+        return commands
