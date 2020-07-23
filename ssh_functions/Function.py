@@ -6,6 +6,9 @@ class Function:
     
     def sudo(self, i):
         return 'echo ' + i + ' | sudo -S '
+    
+    def getReturn(self):
+        return " && echo 'Sucesso.' || echo 'Erro.'; clear;"
 
     def getBaseVariables(self, i):
         password = [
@@ -13,6 +16,7 @@ class Function:
             self.b64decode('U29MZW1icm9Eb0pvdGEmNQ=='), # nova padrão
             self.b64decode('djRuZXNzNDMyMQ=='), # vanessa
             self.b64decode('dm1wYXNz'), # vmserver
+            self.b64decode('SGQzMXRAZDA='), # novissima padrão
         ]
 
         cron_header = r'SHELL=/bin/bash\nPATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin\n\n'

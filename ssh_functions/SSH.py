@@ -18,4 +18,4 @@ class SSH:
                     print(f'{line}')
                     # print(f'INPUT: {cmd} | OUTPUT: {line}')
             else:
-                print('No response.\n')
+                print('Sem output.\n')
