@@ -1,5 +1,13 @@
 # scripts
 
+Programa desenvolvido para desempenhar comandos remotos via ssh para todos os caixas das lojas 01 a 06, a fim de automar parte da produção. Alguns comandos incluem:
+
+- ntpdate(): adicionar um cronjob no sistema;
+- getDates(): retorna as horas do sistema e da BIOS do caixa;
+- changePassword(): muda a senha dos usuários operários de caixa;
+- checkPassword(): verifica a correspondibilidade da senha do usuário caixa;
+- isPinging(): verifica se o caixa está ligado na rede;
+
 #### Exemplo de uso da função ntpdate():
 
 ```python
