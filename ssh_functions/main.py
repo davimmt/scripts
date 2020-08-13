@@ -31,8 +31,8 @@ if __name__ == '__main__':
 
         try:
             print('\033[1m\033[94m[' + ssh_hostname + ']\n\033[0m')
-            ssh.execute_commands(c.changePassword(ssh_hostname, f.getBaseVariables('password')[4]))
-            # ssh.execute_commands(c.checkPassword(f.getBaseVariables('password')[4]))
+            c.isPinging(ssh_ip)
+            ssh.execute_commands(c.getEcf())
             print('---\n')
         except Exception:
             errors.append('Falha na execução do comando com o caixa \033[1m' + ssh_hostname + '\033[0;0m')

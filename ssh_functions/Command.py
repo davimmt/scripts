@@ -1,4 +1,5 @@
 from Function import Function
+import subprocess
 
 class Command:
     def __init__(self, password_index):
@@ -8,7 +9,7 @@ class Command:
         self.sudo = self.f.sudo(self.password)
         self.functionReturn = self.f.getReturn()
     
-    def ntpdate(self, file_name, cron, user, jobs):
+    def setCronjob(self, file_name, cron, user, jobs):
         imploded_jobs = ' && '.join(jobs)
 
         header = self.cron_header
@@ -22,10 +23,17 @@ class Command:
 
         return commands
 
-    def getDates(self):
+    def getDatetime(self):
         commands = [
             "echo 'Hardware Clock: '; " + self.sudo + "hwclock", # | cat >> $file_name
             "echo 'System Clock: '; date '+%a %d %b %Y %H:%M:%S'" # | cat >> $file_name
+        ]
+
+        return commands
+    
+    def getEcf(self):
+        commands = [
+            "cat /vr/vr.properties | grep ecf"
         ]
 
         return commands
@@ -45,3 +53,12 @@ class Command:
         ]
 
         return commands
+    
+    def isPinging(self, ip):
+        try:
+            subprocess.Popen(['ping','-W','2','-c', '1', ip], stdout=subprocess.PIPE)
+            print(1)
+            return True
+        except subprocess.CalledProcessError:
+            print(0)
+            return False
