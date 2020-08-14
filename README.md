@@ -17,7 +17,7 @@ Programa desenvolvido para desempenhar comandos remotos via ssh para todos os ca
   - Parâmetros: 
     - (string) IP.
   - Retorno: (int) 1|(int) 0
-  - [Exemplo](/ssh_functions/examples/isPinging.md.
+  - [Exemplo](/ssh_functions/examples/isPinging.md).
 
 - getDatetime(): 
   - Objetivo: retornar as horas do sistema e da BIOS do objeto;
@@ -37,11 +37,11 @@ Programa desenvolvido para desempenhar comandos remotos via ssh para todos os ca
     - (string) nome de usuário;
     - (string) senha nova;
   - Retorno: null;
-  - [Exemplo](/ssh_functions/examples/isPinging.md).
+  - [Exemplo](/ssh_functions/examples/changePassword.md).
 
 - checkPassword(): 
   - Objetivo: verificar a correspondibilidade da senha do usuário objeto;
   - Parâmetros: 
     - (string) IP;
   - Retorno: (bool)|(string)
-  - [Exemplo](/ssh_functions/examples/isPinging.md).
+  - [Exemplo](/ssh_functions/examples/checkPassword.md).

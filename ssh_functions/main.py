@@ -3,40 +3,46 @@ from Loja import Loja
 from Command import Command
 from Function import Function
 
-lojas = Loja().getPOS() # return @list [loja, [nome, ip, index_senha]]
-loja1 = Loja().getLoja01POS() # return @list [nome, ip, index_senha]
-loja2 = Loja().getLoja02POS()
-loja3 = Loja().getLoja03POS()
-loja4 = Loja().getLoja04POS()
-loja5 = Loja().getLoja05POS()
-loja6 = Loja().getLoja06POS()
+loja = [1, 2, 3, 4, 5, 6] # Mude as LOJAS alvo aqui
+
+lojas = []
+for item in loja:
+    loja_index = item - 1
+    lojas.append(Loja().getAllPOS()[loja_index])
 
 if __name__ == '__main__':
     f = Function()
     errors = []
-    
-    for caixa in loja1:
-        password_index = caixa[2]
-        ssh_hostname = caixa[0]
-        ssh_ip = '192.168.' + caixa[1]
 
-        c = Command(password_index)
-        ssh_password = f.getBaseVariables('password')[password_index]
+    for loja_list in lojas:
+        caixas_list = loja_list[1]
 
-        try:
-            ssh = SSH(ssh_ip, ssh_hostname, ssh_password)
-        except Exception:
-            errors.append('Falha na conexão SSH com o caixa \033[1m' + ssh_hostname)
-            continue
+        for caixas in caixas_list:
+            for caixa in caixas:
+                loja           = loja_list[0]
+                ssh_ip         = '192.168.' + caixas[1]
+                ssh_hostname   = caixas[0]
+                password_index = caixas[2]
 
-        try:
-            print('\033[1m\033[94m[' + ssh_hostname + ']\n\033[0m')
-            c.isPinging(ssh_ip)
-            ssh.execute_commands(c.getEcf())
-            print('---\n')
-        except Exception:
-            errors.append('Falha na execução do comando com o caixa \033[1m' + ssh_hostname + '\033[0;0m')
-            continue
+                c = Command(password_index)
+                ssh_password = f.getBaseVariables('password')[password_index]
+                
+                try:
+                    ssh = SSH(ssh_ip, ssh_hostname, ssh_password)
+                except Exception:
+                    errors.append('Falha na conexão SSH com o \033[1m' + ssh_hostname + ' loja0' + loja + '\033[0;0m')
+                    break
+
+                try:
+                    print('\033[1m\033[94m[Loja ' + loja + '][' + ssh_hostname + ']\n\033[0m')
+                    # Insira os COMANDOS/FUNÇÕES aqui
+                    c.isPinging(ssh_ip)
+                    #
+                    print('---\n')
+                except Exception:
+                    errors.append('Falha na execução do comando com o \033[1m' + ssh_hostname + ' loja0' + loja + '\033[0;0m')
+                    break
+                break
 
     for error in errors:
         print('\033[91m' + error + '.\033[0;0m\n')
