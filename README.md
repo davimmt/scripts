@@ -45,3 +45,7 @@ Programa desenvolvido para desempenhar comandos remotos via ssh para todos os ca
     - (string) IP;
   - Retorno: (bool)|(string)
   - [Exemplo](/ssh_functions/examples/checkPassword.md).
+
+
+Você também tem a opção de passar comandos shell sem chamar as funções ou comandos pré-feitos:
+  - [Exemplo](/ssh_functions/examples/basic.md).
