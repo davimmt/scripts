@@ -3,7 +3,7 @@ from Loja import Loja
 from Command import Command
 from Function import Function
 
-loja = [1, 2, 3, 4, 5, 6] # Mude as LOJAS alvo aqui
+loja = [3] # Mude as LOJAS alvo aqui
 
 lojas = []
 for item in loja:
