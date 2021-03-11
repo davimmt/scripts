@@ -1,6 +1,5 @@
 # scripts
-
-* Foram removidas as informações confidencias da empresa, algumas funções podem não funcionar.
+> Foram removidas as informações confidencias da empresa, algumas funções podem não funcionar.
 
 Programa desenvolvido para desempenhar comandos remotos via ssh para todos os caixas das lojas 01 a 06, a fim de automar parte da produção. Comandos incluem:
 
